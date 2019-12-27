@@ -1,0 +1,23 @@
+cp ~/fisco/nodes/127.0.0.1/sdk/* ./src/test/
+cp ~/fisco/nodes/127.0.0.1/sdk/* ./src/test/java/
+cp ~/fisco/nodes/127.0.0.1/sdk/* ./src/main/resources/
+
+
+首先，启动节点：
+~/fisco/nodes/127.0.0.1/start_all.sh
+然后进入lagcredit目录，拷贝节点证书们：
+cd ~/Desktop/lagcredit
+cp ~/fisco/nodes/127.0.0.1/sdk/* ./src/main/resources/
+最后运行:
+gradle build
+
+gradle build提速：把repository {}那一段换成：
+repositories {
+    mavenCentral()
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    maven { url "https://dl.bintray.com/ethereum/maven/" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+完成测试的标志：
+BUILD SUCCESSFUL in 3m 19s
+6 actionable tasks: 5 executed, 1 up-to-date

@@ -1,0 +1,262 @@
+Using username "fisco-bcos".
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-45-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Overheard at KubeCon: "microk8s.status just blew my mind".
+
+     https://microk8s.io/docs/commands#microk8s.status
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+Welcome to Alibaba Cloud Elastic Compute Service !
+
+Last login: Sun Dec 22 18:54:49 2019 from 58.254.69.136
+fisco-bcos@iZj6c3ipc06o8j4b4c85cbZ:~$ sudo su
+[sudo] password for fisco-bcos:
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos# source /etc/profile
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos# java -version
+openjdk version "11.0.5" 2019-10-15
+OpenJDK Runtime Environment (build 11.0.5+10-post-Ubuntu-0ubuntu1.118.04)
+OpenJDK 64-Bit Server VM (build 11.0.5+10-post-Ubuntu-0ubuntu1.118.04, mixed mode, sharing)
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos# mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 264
+Server version: 5.7.28-0ubuntu0.18.04.4 (Ubuntu)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databases' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| webasenodemanager  |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> use webasenodemanager;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-----------------------------+
+| Tables_in_webasenodemanager |
++-----------------------------+
+| tb_account_info             |
+| tb_cert                     |
+| tb_contract                 |
+| tb_front                    |
+| tb_front_group_map          |
+| tb_group                    |
+| tb_method                   |
+| tb_node                     |
+| tb_role                     |
+| tb_token                    |
+| tb_trans_daily              |
+| tb_user                     |
+| tb_user_key_mapping         |
++-----------------------------+
+13 rows in set (0.00 sec)
+
+mysql> quit;
+Bye
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos# ls
+asset-app  asset-app.tar.gz  debian.cnf  fisco  lagcredit.zip  software  solc  webase-deploy  webase-deploy.zip
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos# cd webase-deploy
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy# ls
+build_chain.sh     deploy.py   log       README-en.md  webase-front.zip     webase-web
+comm               h2          nodeconf  telnet.py     webase-node-mgr      webase-web.zip
+common.properties  install.md  PyMySQL   webase-front  webase-node-mgr.zip
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy# python3.6 deploy.py stopAll
+try to stop node0
+try to stop node1
+try to stop node2
+try to stop node3
+ stop node0 success.
+ stop node2 success.
+ stop node1 success.
+ stop node3 success.
+=======      WeBASE-Web     stop  success!  =======
+======= WeBASE-Node-Manager stop  success!  =======
+=======     WeBASE-Front    is not running! =======
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy# python3.6 deploy.py installAll
+================================================================
+
+              _    _     ______  ___  _____ _____
+             | |  | |    | ___ \/ _ \/  ___|  ___|
+             | |  | | ___| |_/ / /_\ \ `--.| |__
+             | |/\| |/ _ | ___ |  _  |`--. |  __|
+             \  /\  |  __| |_/ | | | /\__/ | |___
+              \/  \/ \___\____/\_| |_\____/\____/
+
+================================================================
+===================== envrionment check... =====================
+check git...
+check finished sucessfully.
+check openssl...
+check finished sucessfully.
+check curl...
+check finished sucessfully.
+check nginx...
+check finished sucessfully.
+check java...
+check finished sucessfully.
+check WeBASE-Web port...
+check finished sucessfully.
+check WeBASE-Node-Manager port...
+check finished sucessfully.
+check WeBASE-Front port...
+check finished sucessfully.
+check database connection...
+check finished sucessfully.
+===================== envrionment ready... =====================
+================================================================
+=====================    deploy   start... =====================
+==============      FISCO-BCOS      start...  ==============
+try to start node0
+try to start node1
+try to start node2
+try to start node3
+ node3 start successfully
+ node0 start successfully
+ node2 start successfully
+ node1 start successfully
+==============      FISCO-BCOS      end...    ==============
+================================================================
+==============      WeBASE-Web     install... ==============
+webase-web.zip already exists. Download again or not？[y/n]:n
+webase-web.zip has been unzipped. Whether to re-unzip？[y/n]:n
+==============      WeBASE-Web      start...  ==============
+=======      WeBASE-Web     start success!  =======
+==============      WeBASE-Web      end...    ==============
+================================================================
+============== WeBASE-Node-Manager install... ==============
+webase-node-mgr.zip already exists. Download again or not？[y/n]:n
+webase-node-mgr.zip has been unzipped. Whether to re-unzip？[y/n]:n
+WeBASE-Node-Manager database webasenodemanager already exists, delete rebuild or not？[y/n]:n
+Whether to initialize the data (the first deployment or rebuilding of the library needs to be performed)？[y/n]:n
+============== WeBASE-Node-Manager  start...  ==============
+======= WeBASE-Node-Manager start success!  =======
+============== WeBASE-Node-Manager  end...    ==============
+================================================================
+==============     WeBASE-Front    install... ==============
+webase-front.zip already exists. Download again or not？[y/n]:n
+webase-front.zip has been unzipped. Whether to re-unzip？[y/n]:n
+WeBASE-Front database webasefront already exists, delete rebuild or not？[y/n]:n
+==============     WeBASE-Front     start...  ==============
+=======     WeBASE-Front    start  fail. Please view log file (default path:./webase-front/log/).    =======
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy# cd webase-front
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy/webase-front# ls
+apps  conf  lib  log  start.sh  static  status.sh  stop.sh
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy/webase-front# cd log
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy/webase-front/log# ls
+front.out  web3sdk.log  WeBASE-Front-error.log  WeBASE-Front.log
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy/webase-front/log# tail -f WeBASE-Front-error.log
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:312) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:308) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:585) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        ... 19 more
+^C
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy/webase-front/log# tail -f WeBASE-Front.log
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:312) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:308) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:585) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        ... 19 more
+^C
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy/webase-front/log# tail -f web3sdk.log
+2019-12-22 21:12:25.659 [nioEventLoopGroup-2-1] DEBUG ChannelHandler() - disconnect 127.0.0.1:20200 ,false
+2019-12-22 21:12:27.650 [Thread-2] DEBUG ChannelConnections() - try connect to: 127.0.0.1:20200
+2019-12-22 21:12:27.650 [Thread-2] DEBUG ChannelConnections() - connect to: 127.0.0.1:20200 success
+2019-12-22 21:12:27.651 [nioEventLoopGroup-2-2] DEBUG ChannelHandler() - set threadPool:false
+2019-12-22 21:12:27.651 [nioEventLoopGroup-2-2] DEBUG ChannelHandler() - success,connected[127.0.0.1]:[20200],true
+2019-12-22 21:12:27.652 [nioEventLoopGroup-2-2] DEBUG ChannelHandler() - client connect success 127.0.0.1:20200
+2019-12-22 21:12:27.652 [nioEventLoopGroup-2-2] DEBUG ConnectionCallback() - connection established，send topic to the connection:726c94a750874a63ad72689e9cfb3ae5
+2019-12-22 21:12:27.652 [nioEventLoopGroup-2-2] DEBUG ConnectionCallback() - topics: ["_block_notify_1"]
+2019-12-22 21:12:27.653 [nioEventLoopGroup-2-2] DEBUG ChannelHandler() - disconnect
+2019-12-22 21:12:27.653 [nioEventLoopGroup-2-2] DEBUG ChannelHandler() - disconnect 127.0.0.1:20200 ,false
+^C
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy/webase-front/log# tail -f front.out
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Dec 22, 2019 9:02:22 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service [Tomcat]
+Dec 22, 2019 9:02:22 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/8.5.23
+Dec 22, 2019 9:02:22 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring embedded WebApplicationContext
+Dec 22, 2019 9:02:55 PM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service [Tomcat]
+^C
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy/webase-front/log# python3.6 deploy.py stopAll
+try to stop node0
+try to stop node1
+try to stop node2
+try to stop node3
+ stop node3 success.
+ stop node2 success.
+ stop node0 success.
+ stop node1 success.
+=======      WeBASE-Web     stop  success!  =======
+======= WeBASE-Node-Manager stop  success!  =======
+=======     WeBASE-Front    is not running! =======
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy#
+=====================================================================================================================================================
+=====================================================================================================================================================
+root@iZj6c3ipc06o8j4b4c85cbZ:/home/fisco-bcos/webase-deploy/webase-front/log# vi WeBASE-Front-error.log
+2019-12-22 05:00:36.820 [main] ERROR SpringApplication() - Application startup failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'contractController': Unsatisfied dependency expressed through field 'contractService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'contractService': Unsatisfied dependency expressed through field 'web3jMap'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'web3j' defined in class path resource [com/webank/webase/front/config/Web3Config.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [java.util.HashMap]: Factory method 'web3j' threw exception; nested exception is java.io.IOException: Processing bcos message timeout
+        at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:588) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:366) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1272) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:312) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:308) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867) ~[spring-context-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543) ~[spring-context-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122) ~[spring-boot-1.5.9.RELEASE.jar:1.5.9.RELEASE]
+        at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693) [spring-boot-1.5.9.RELEASE.jar:1.5.9.RELEASE]
+        at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360) [spring-boot-1.5.9.RELEASE.jar:1.5.9.RELEASE]
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-1.5.9.RELEASE.jar:1.5.9.RELEASE]
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118) [spring-boot-1.5.9.RELEASE.jar:1.5.9.RELEASE]
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107) [spring-boot-1.5.9.RELEASE.jar:1.5.9.RELEASE]
+        at com.webank.webase.front.Application.main(Application.java:47) [WeBASE-Front.jar:?]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'contractService': Unsatisfied dependency expressed through field 'web3jMap'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'web3j' defined in class path resource [com/webank/webase/front/config/Web3Config.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [java.util.HashMap]: Factory method 'web3j' threw exception; nested exception is java.io.IOException: Processing bcos message timeout
+        at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:588) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+        at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:366) ~[spring-beans-4.3.18.RELEASE.jar:4.3.18.RELEASE]
+"WeBASE-Front-error.log" 272L, 47583C           

@@ -1,0 +1,82 @@
+fisco-bcos@fiscobcos-VirtualBox:~$ ls
+Desktop    examples.desktop  Music     solc       webase-deploy
+Documents  fisco             Pictures  Templates  webase-deploy.zip
+Downloads  fiscobak          Public    Videos
+fisco-bcos@fiscobcos-VirtualBox:~$ cd webase-deploy
+fisco-bcos@fiscobcos-VirtualBox:~/webase-deploy$ ls
+build_chain.sh     deploy.py   log        webase-front      webase-node-mgr.zip
+comm               h2          nodeconf   webase-front.zip  webase-web
+common.properties  install.md  telnet.py  webase-node-mgr   webase-web.zip
+fisco-bcos@fiscobcos-VirtualBox:~/webase-deploy$ python deploy.py installAll
+================================================================
+
+              _    _     ______  ___  _____ _____ 
+             | |  | |    | ___ \/ _ \/  ___|  ___|
+             | |  | | ___| |_/ / /_\ \ `--.| |__  
+             | |/\| |/ _ | ___ |  _  |`--. |  __| 
+             \  /\  |  __| |_/ | | | /\__/ | |___ 
+              \/  \/ \___\____/\_| |_\____/\____/  
+    
+================================================================
+===================== envrionment check... =====================
+check git...
+check finished sucessfully.
+check openssl...
+check finished sucessfully.
+check curl...
+check finished sucessfully.
+check nginx...
+check finished sucessfully.
+check java...
+check finished sucessfully.
+check WeBASE-Web port...
+check finished sucessfully.
+check WeBASE-Node-Manager port...
+check finished sucessfully.
+check WeBASE-Front port...
+check finished sucessfully.
+check database connection...
+check finished sucessfully.
+===================== envrionment ready... =====================
+================================================================
+=====================    deploy   start... =====================
+==============      FISCO-BCOS      start...  ==============
+try to start node0
+try to start node1
+try to start node2
+try to start node3
+ node2 is running, pid is 9534.
+ node3 is running, pid is 9532.
+ node1 is running, pid is 9524.
+ node0 is running, pid is 9513.
+==============      FISCO-BCOS      end...    ==============
+================================================================
+==============      WeBASE-Web     install... ==============
+webase-web.zip编译包已经存在。是否重新下载？[y/n]:n
+webase-web.zip编译包已经解压。是否重新解压？[y/n]:n
+==============      WeBASE-Web      start...  ==============
+[sudo] password for fisco-bcos: 
+=======      WeBASE-Web     start success!  =======
+==============      WeBASE-Web      end...    ==============
+================================================================
+============== WeBASE-Node-Manager install... ==============
+webase-node-mgr.zip编译包已经存在。是否重新下载？[y/n]:n
+webase-node-mgr.zip编译包已经解压。是否重新解压？[y/n]:n
+WeBASE-Node-Manager数据库webasenodemanager已经存在，是否删除重建？[y/n]:n
+是否初始化数据(首次部署或重建库需执行)？[y/n]:n
+============== WeBASE-Node-Manager  start...  ==============
+======= WeBASE-Node-Manager start success!  =======
+============== WeBASE-Node-Manager  end...    ==============
+================================================================
+==============     WeBASE-Front    install... ==============
+webase-front.zip编译包已经存在。是否重新下载？[y/n]:n
+webase-front.zip编译包已经解压。是否重新解压？[y/n]:n
+WeBASE-Front数据库webasefront已经存在，是否删除重建？[y/n]:n
+==============     WeBASE-Front     start...  ==============
+=======     WeBASE-Front    start success!  =======
+==============     WeBASE-Front     end...    ==============
+================================================================
+=====================    deploy   end...   =====================
+=====================    version  v1.2.0   =====================
+================================================================
+fisco-bcos@fiscobcos-VirtualBox:~/webase-deploy$ 

@@ -1,0 +1,42 @@
+澳門FISCO-BCOS培訓三期課程
+ 1. 第一組對build_chain.sh的說明
+     https://github.com/davisok/FiscoBcos?files=1
+     第二組對build_chain.sh的說明
+     https://github.com/snakewa/fiscobcos-wk1/blob/master/wk1.md
+     第三組對build_chain.sh的說明
+     https://github.com/yanupamy/fisco-bcos-group3/blob/master/Build_Chain_%E9%BB%84%E6%96%87%E5%8D%8E_group3
+     https://github.com/yanupamy/fisco-bcos-group3/blob/master/Build_chain_%E6%9D%8E%E6%A5%A0%E5%81%A5_group3
+     第四組對build_chain.sh的說明
+     https://github.com/whoisterencelee/fiscobcos4macau/blob/master/wk1/build_chain.md
+ 2. 在線工具（SOLIDITY）
+     https://remix.ethereum.org/
+ 3. 測試項目（lagcredit_1019.zip）的使用
+        圖片1（原理）
+     第一，首先進入lagcredit項目目錄，然後安裝gradle（指定要求版本）
+       ~：wget https://services.gradle.org/distributions/gradle-5.2.1-bin.zip
+       ~：sudo mkdir /opt/gradle
+       ~：sudo unzip -d /opt/gradle gradle-5.2.1-bin.zip
+       ~：export PATH=$PATH:/opt/gradle/gradle-5.2.1/bin
+       ~：gradle -v
+     第二，進行測試，步驟如下：
+	    圖片2
+        首先，启动节点：
+       ~/fisco/nodes/127.0.0.1/start_all.sh
+        然后进入lagcredit目录，拷贝节点证书们：
+        cd ~/Desktop/lagcredit
+        cp ~/fisco/nodes/127.0.0.1/sdk/* ./src/main/resources/
+        最后运行:
+        gradle build
+  注意：
+      (1) gradle build提速：把repository {}那一段换成：
+          repositories {
+           mavenCentral()
+           maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+           maven { url "https://dl.bintray.com/ethereum/maven/" }
+           maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+           }
+           完成测试的标志：
+           BUILD SUCCESSFUL in 3m 19s
+           6 actionable tasks: 5 executed, 1 up-to-date
+       (2) 使用控制台命令sol2java.sh將LAGCredit.sol 轉為LAGCredit.java(記得指定包名)
+	       圖片3
